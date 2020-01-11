@@ -14,24 +14,26 @@ two onclick events
 
 var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=6HGjEBtdUgM4BboKpQU4W3rByLFoyQC5";
 
-var searchTerm = $("#searchTerm").val();
+
+
+$("#searchBtn").on("click", function(event) {
+    event.preventDefault();
+    var searchTerm = $("#searchTerm").val();
     console.log(searchTerm);
+    $( "#searchBtn" ).submit();
 
-$("#searchBtn").on("click", function() {
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        
+
+        console.log(response);
+
+
+        //for (var i = 0; i < results.length; i++) {
+
     
-
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    
-
-    console.log(response);
-
-
-     //for (var i = 0; i < results.length; i++) {
-
-  
      
 
   });
