@@ -25,16 +25,21 @@ $("#searchBtn").on("click", function(event) {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
+    }).then(function(data) {
+        
+        
         
 
-        console.log(response);
+       
 
 
-        //for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < 10; i++) {
+            var headline = data.response.docs[i].headline.main;
+            console.log(headline)
+            var p = $("<p>").text("Headlines: " + headline);
+            $("#result").append(p);
 
-    
-     
+        }
 
   });
 
