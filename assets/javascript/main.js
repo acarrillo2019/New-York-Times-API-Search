@@ -11,29 +11,23 @@ two onclick events
 
 
 */
-
-var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=6HGjEBtdUgM4BboKpQU4W3rByLFoyQC5";
+var searchTerm = $(this).attr("data-name");
+var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" +searchTerm+ "&api-key=6HGjEBtdUgM4BboKpQU4W3rByLFoyQC5";
 
 
 
 $("#searchBtn").on("click", function(event) {
     event.preventDefault();
-    var searchTerm = $("#searchTerm").val();
+    var searchTerm = $("#searchTerm").val().trim();
     console.log(searchTerm);
     $( "#searchBtn" ).submit();
-
+    
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(data) {
-        
-        
-        
-
-       
-
-
-        for (var i = 0; i < 10; i++) {
+            
+            for (var i = 0; i < 10; i++) {
             var headline = data.response.docs[i].headline.main;
             console.log(headline)
             var p = $("<p>").text("Headlines: " + headline);
